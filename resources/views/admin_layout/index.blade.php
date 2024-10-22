@@ -8,16 +8,16 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="fonts/icomoon/style.css">
-  <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
-  <link rel="stylesheet" href="css/jquery-ui.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="/css/jquery-ui.css">
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="/css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-  <link rel="stylesheet" href="css/aos.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/aos.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
                 <li><a href="categoria" class="nav-link">Categorias</a></li>
                 <li><a href="time" class="nav-link">Times</a></li>
                 <li><a href="jogadores" class="nav-link">Jogadores</a></li>
-                <li><a href="contact.html" class="nav-link">Inscreva-se</a></li>
+                <li><a href="registrar" class="nav-link">Inscreva-se</a></li>
               </ul>
             </nav>
 
@@ -59,26 +59,25 @@
     </header>
 
     <div>
-        @yield('admin_template')
-        <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-5 ml-auto">
-          <h1 class="text-white">World Cup Event</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
-          <div id="date-countdown"></div>
-          <p>
-            <a href="#" class="btn btn-primary py-3 px-4 mr-3">Book Ticket</a>
-            <a href="#" class="more light">Learn More</a>
-          </p>  
+      <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-5 ml-auto">
+              <h1 class="text-white">World Cup Event</h1>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
+              <div id="date-countdown"></div>
+              <p>
+                <a href="#" class="btn btn-primary py-3 px-4 mr-3">Book Ticket</a>
+                <a href="#" class="more light">Learn More</a>
+              </p>  
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
         <div class="d-flex team-vs">
           <span class="score">4-1</span>
           <div class="team-1 w-50">
@@ -110,7 +109,7 @@
     </div>
   </div>
 
-
+  @yield('admin_template')
   <div class="latest-news">
     <div class="container">
       <div class="row">
@@ -531,23 +530,23 @@
   </div>
   <!-- .site-wrap -->
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.fancybox.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/jquery.mb.YTPlayer.min.js"></script>
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/js/jquery-ui.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/jquery.countdown.min.js"></script>
+  <script src="/js/bootstrap-datepicker.min.js"></script>
+  <script src="/js/jquery.easing.1.3.js"></script>
+  <script src="/js/aos.js"></script>
+  <script src="/js/jquery.fancybox.min.js"></script>
+  <script src="/js/jquery.sticky.js"></script>
+  <script src="/js/jquery.mb.YTPlayer.min.js"></script>
 
 
-  <script src="js/main.js"></script>
+  <script src="/js/main.js"></script>
 
 </body>
 

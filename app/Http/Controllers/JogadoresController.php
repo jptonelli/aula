@@ -53,7 +53,7 @@ class JogadoresController extends Controller
     public function buscarAlteracao($id){
         $jogador = Jogador::where("id", $id)->first();
 
-        return view('jogadores.alterar', compact('jogador'));
+        return view('/jogadores.alterar', compact('jogador'));
 
         return redirect('/jogadores');
     }
