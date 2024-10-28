@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('time', function (Blueprint $table) {
+        Schema::create('escalados', function (Blueprint $table) {
             $table->id(); // int, autoincremento
-            $table->string("time_nome");
-            $table->string("time_estado");
+            $table->string("jogador_nome");
+            $table->date("jogador_nascimento");
+            $table->string("jogador_posicao");
+            $table->string("nome_tecnico");
+            $table->string("aux_tecnico");
             $table->boolean("cat_ativo")->default(1);
             $table->timestamps();
         });
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('time');
+        Schema::dropIfExists('escalados');
     }
 };

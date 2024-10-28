@@ -21,6 +21,12 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+  <style>
+    input {
+      color: green;
+    }
+  </style>
 </head>
 
 <body>
@@ -62,97 +68,181 @@
     </header>
 
     <main>
-    <div>
+      <div>
         <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
 
-        <div class="container">
+          <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-5 ml-auto">
-                    <h1 class="text-white">World Cup Event</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
-                    <div id="date-countdown"></div>
-                        <p>
-                            <a href="#" class="btn btn-primary py-3 px-4 mr-3">Book Ticket</a>
-                            <a href="#" class="more light">Learn More</a>
-                        </p>  
-                    </div>
-                </div>
+              <div class="col-lg-5 ml-auto">
+                <h1 class="text-white">Conheça as Equipes Participantes</Em></h1>
+                <p>Aproveite e Inscreva sua Equipe para o Maior Campeonato Amador de Bauru.</p>
+                <div id="date-countdown"></div>
+                <p>
+                  <a href="/timeCadastrar" class="btn btn-primary py-3 px-4 mr-3">Inscreva sua Equipe</a>
+                  <a href="#" class="more light">Saiba mais</a>
+                </p>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="container-fluid px-4">
-    <h1 class="mt-4">Times</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Times</li>
-    </ol>
-    
-    <div class="card mb-4">
-        <div class="card-header">
+      </div>
+      <div class="container-fluid px-4">
+        <h1 class="mt-4">Times</h1>
+        <ol class="breadcrumb mb-4">
+          <li class="breadcrumb-item active">Times</li>
+        </ol>
+
+        <div class="card mb-4">
+          <div class="card-header">
             <i class="fas fa-table me-1"></i>
             Times
-        </div>
-        <div class="card-body">
+          </div>
+          <div class="card-body">
             <table id="datatablesSimple">
-                <thead>
-                    <th>ID</th>
-                    <th>EQUIPE</th>
-                    <th>ESTADO</th>
-                    <th>OPÇÕES</th>
-                </thead>
+              <thead>
+                <th>ID</th>
+                <th>EQUIPE</th>
+                <th>ESTADO</th>
+                <th>OPÇÕES</th>
+              </thead>
 
-                <tbody>
-                    @foreach($times as $linha)
-                        <tr>
-                            <td>{{$linha->id}}</td>
-                            <td>{{$linha->time_nome}}</td>
-                            <td>{{$linha->time_estado}}</td>
-                            <td>
-                                <a href='{{ route("time_upd", [ "id" => $linha->id]) }}' class="btn btn-success">
-                                    <li class="fa fa-pencil"></li>
-                                </a> |
-                                <a href='{{ route("time_exc", [ "id" => $linha->id]) }}' class="btn btn-danger">
-                                    <li class="fa fa-trash"></li>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
+              <tbody>
+                @foreach($times as $linha)
+                <tr>
+                  <td>{{$linha->id}}</td>
+                  <td>{{$linha->time_nome}}</td>
+                  <td>{{$linha->time_estado}}</td>
+                  <td>
+                    <a href='{{ route("time_upd", [ "id" => $linha->id]) }}' class="btn btn-success">
+                      <li class="fa fa-pencil"></li>
+                    </a> |
+                    <a href='{{ route("time_exc", [ "id" => $linha->id]) }}' class="btn btn-danger">
+                      <li class="fa fa-trash"></li>
+                    </a>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
             </table>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 25px">
-  Novo
-</button>
+      <!-- Modal -->
+      <div class="modal fade" id="inscricaoModal" tabindex="-1" role="dialog" aria-labelledby="inscricaoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="inscricaoModalLabel" style="color: black;text-transform:uppercase">Formulário de Inscrição de Time</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/time" method="POST">
+              @csrf <!-- TOKEN PARA SEGURANÇA -->
+                <div class="form-group">
+                  <label for="campeonato">Nome do Campeonato:</label>
+                  <input type="text" class="form-control" id="campeonato" name="campeonato" value="Soccer TM" disabled>
+                </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="POST" action="/time">
-                @csrf <!-- TOKEN PARA SEGURANÇA -->
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nova Equipe</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="form-group">
+                  <label for="data_inscricao">Data da Inscrição:</label>
+                  <input type="date" class="form-control" id="data_inscricao" name="data_inscricao" required>
                 </div>
-                <div class="modal-body">
-                    <label class="form-label" for="time_nome">Nome da Equipe</label>
-                    <input class="form-control" type="text" name="time_nome" id="time_nome">
 
-                    <label class="form-label" for="time_estado">Estado da Equipe</label>
-                    <input class="form-control" type="text" name="time_estado" id="time_estado">
+                <h5 style="color: black;text-transform:uppercase; text-align:center;">Dados do Time</h5>
+                <div class="form-group">
+                  <label for="nome_time">Nome do Time:</label>
+                  <input type="text" class="form-control" id="nome_time" name="nome_time" required>
                 </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+
+                <div class="form-group">
+                  <label for="cores_uniforme">Cores do Uniforme:</label>
+                  <input type="text" class="form-control" id="cores_uniforme" name="cores_uniforme" required>
                 </div>
-            </form>
+
+                <div class="form-group">
+                  <label for="categoria">Categoria:</label>
+                  <select class="form-control" id="categoria" name="categoria" required>
+                    <option value="adulto">Adulto</option>
+                    <option value="sub20">Sub-20</option>
+                    <option value="sub17">Sub-17</option>
+                    <option value="outros">Outros</option>
+                  </select>
+                </div>
+
+                <h5>Dados do Responsável</h5>
+                <div class="form-group">
+                  <label for="nome_responsavel">Nome Completo:</label>
+                  <input type="text" class="form-control" id="nome_responsavel" name="nome_responsavel" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="telefone">Telefone:</label>
+                  <input type="tel" class="form-control" id="telefone" name="telefone" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">E-mail:</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <h5>Lista de Jogadores</h5>
+                <div id="jogadores">
+                  <div class="form-group">
+                    <label for="jogador1">Nome do Jogador 1:</label>
+                    <input type="text" class="form-control" id="jogador1" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador2">Nome do Jogador 2:</label>
+                    <input type="text" class="form-control" id="jogador2" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador3">Nome do Jogador 3:</label>
+                    <input type="text" class="form-control" id="jogador3" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador4">Nome do Jogador 4:</label>
+                    <input type="text" class="form-control" id="jogador4" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador5">Nome do Jogador 5:</label>
+                    <input type="text" class="form-control" id="jogador5" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador6">Nome do Jogador 6:</label>
+                    <input type="text" class="form-control" id="jogador6" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador7">Nome do Jogador 7:</label>
+                    <input type="text" class="form-control" id="jogador7" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador8">Nome do Jogador 8:</label>
+                    <input type="text" class="form-control" id="jogador8" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador9">Nome do Jogador 9:</label>
+                    <input type="text" class="form-control" id="jogador9" name="jogador[]" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="jogador10">Nome do Jogador 10:</label>
+                    <input type="text" class="form-control" id="jogador10" name="jogador[]" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="declaracao">Declaração:</label>
+                  <input type="text" class="form-control" id="declaracao" name="declaracao" required placeholder="Digite seu nome para declarar.">
+                </div>
+
+                <button href="timeCadastrar" type="submit" class="btn btn-success btn-block">Enviar Inscrição</button>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
-        </div>
+      </div>
     </main>
 
     <footer class="footer-section">

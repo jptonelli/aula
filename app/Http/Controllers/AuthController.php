@@ -41,7 +41,7 @@ class AuthController extends Controller
             // Login bem-sucedido
             $request->session()->regenerate();
 
-            return redirect()->route('jogadores')->with('success', 'Login bem-sucedido!');
+            return view ('time.cadastrar');
         }
 
         // Se as credenciais estiverem erradas

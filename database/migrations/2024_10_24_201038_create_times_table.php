@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jogador', function (Blueprint $table) {
+        Schema::create('times', function (Blueprint $table) {
             $table->id(); // int, autoincremento
-            $table->string("jogador_nome");
-            $table->string("jogador_estado");
+            $table->date("data_inscricao");
+            $table->string("nome_time");
+            $table->string("cores_time");
+            $table->string("categoria_time");
+            $table->string("nome_responsavel");
+            $table->string("telefone");
+            $table->string("email");
             $table->boolean("cat_ativo")->default(1);
             $table->timestamps();
         });
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jogador');
+        Schema::dropIfExists('times');
     }
 };
