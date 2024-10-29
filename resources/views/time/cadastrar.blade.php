@@ -105,7 +105,7 @@
 <body>
     <div class="container mt-5">
         <h2 style="text-align: center;" class="text-center"><i class="fas fa-futbol"></i> Inscrição para o Campeonato Amador</h2>
-        <form action="{{ route('timeCadastrar') }}" method="POST">
+        <form action="{{ route('checkout') }}" method="post">
             @csrf
             <div class="dadosCamp">
                 <div class="form-group">
@@ -217,8 +217,10 @@
                     <input type="text" class="form-control" id="declaracao" name="declaracao" required placeholder="Digite seu nome para declarar.">
                 </div>
             </div>
-
-            <button type="submit" class="botao btn btn-success btn-block">Enviar Inscrição</button>
+                
+            <input type="hidden" name="amount" value="150">
+            <p>Valor da Inscrição: R$150,00</p>
+            <button type="submit" class="botao btn btn-success btn-block">Pagar Inscrição</button>
         </form>
     </div>
 
@@ -227,7 +229,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
 
 </body>
 

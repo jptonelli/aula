@@ -5,7 +5,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\JogadoresController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ControllerPagamento;
+use App\Http\Controllers\paypalController;
 
 Route::get("/", function() {
     return view ("admin_layout.index");
@@ -45,3 +45,8 @@ Route::get("/login", function(){
     return view("admin_layout.login");
 })->name('login');
 Route::post("/login", [AuthController::class, 'login']);
+
+Route::post('/checkout', '\App\Http\Controllers\paypalController@index')->name('checkout');
+Route::get('/create/{amount}', '\App\Http\Controllers\paypalController@create');
+Route::post('/complete', '\App\Http\Controllers\paypalController@complete');
+
